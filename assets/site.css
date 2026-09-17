@@ -1,7 +1,7 @@
 :root { color-scheme: light; --link: #0000cc; --rule: #999; }
 * { box-sizing: border-box; }
 html { scroll-padding-top: 80px; }
-body { margin: 0; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; background: #fff; color: #111; font-family: "Latin Modern Roman", Georgia, serif; font-size: 17px; line-height: 1.45; }
+body { margin: 0; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; background: #fff; color: #111; font-family: "Latin Modern Roman", Georgia, serif; font-size: 16px; line-height: 1.45; }
 a, a:visited { color: var(--link); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 button, input { font: inherit; }
 button { cursor: pointer; }
@@ -41,12 +41,12 @@ li p, li p + p { margin: 0; }
 .paper-title { margin-left: -22px; }
 .paper p + p { margin-top: 2px; }
 .paper .resource-links { margin-top: 5px; }
-.resource-links { font-size: 16px; }
+.resource-links { font-size: 15px; }
 .course-group { margin-top: 20px; }
 .course-group + .course-group { margin-top: 26px; }
 .course { margin: 14px 0 0 22px; }
 .course-details { margin: 2px 0 0 22px; }
-.evaluation-note, .catalog-note, .document-note, .award-note { font-size: 16px; }
+.evaluation-note, .catalog-note, .document-note, .award-note { font-size: 15px; }
 .teaching-project + .teaching-project { margin-top: 24px; }
 .teaching-project h3 a, .separator { font-weight: 400; }
 .teaching-project p { margin-left: 22px; }
@@ -59,7 +59,7 @@ blockquote { margin: 18px 0 0 22px; max-width: 80ch; }
 .discussion { margin: 0 0 21px; padding-left: 22px; }
 .discussion-title { margin-left: -22px; }
 .discussion p + p { margin-top: 2px; }
-.discussion-meta { font-size: 16px; }
+.discussion-meta { font-size: 15px; }
 .home-page { padding-top: 24px; }
 .home-layout { display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
 .portrait { display: block; width: 100%; height: auto; }
@@ -68,7 +68,7 @@ blockquote { margin: 18px 0 0 22px; max-width: 80ch; }
 .home-bio > p, .home-bio > .affiliation { margin: 0 0 22px; }
 .home-bio > :last-child { margin-bottom: 0; }
 .affiliation p { margin: 0; }
-.contact-links { font-size: 16px; }
+.contact-links { font-size: 15px; }
 .home-rule { height: 0; border: 0; border-top: 1px solid var(--rule); margin: 32px 0 0; }
 .site-footer { flex: 0 0 auto; padding: 40px 24px 20px; font-size: 14px; text-align: center; }
 dialog { width: min(720px, calc(100vw - 32px)); max-height: 85vh; padding: 24px; border: 1px solid #aaa; background: #fff; color: #111; }
@@ -76,14 +76,14 @@ dialog::backdrop { background: #0005; }
 .search-heading { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
 .search-heading h2 { font-size: 25px; border: 0; margin-bottom: 20px; }
 .search-heading .icon-button { font: 28px Arial, sans-serif; }
-#search-input { display: block; width: 100%; padding: 12px; margin: 12px 0; border: 1px solid #777; border-radius: 0; }
+#search-input { display: block; width: 100%; padding: 12px; margin: 12px 0; border: 1px solid #777; border-radius: 0; font-size: 16px; }
 #search-results { list-style: none; padding: 0; }
 #search-results li { margin: 20px 0; }
 #search-results p { margin: 8px 0 0; }
 #search-status { margin: 0; }
 .not-found p { margin-top: 24px; }
 @media (max-width: 767px) {
-  body { font-size: 16px; }
+  body { font-size: 15px; }
   .site-header { min-height: 56px; justify-content: space-between; padding: 0 16px; }
   .menu-toggle { display: inline-flex; }
   body.js #site-nav { display: none; position: fixed; top: 56px; bottom: 0; left: 0; width: min(320px, 90vw); padding: 16px; align-items: stretch; flex-direction: column; gap: 8px; overflow-y: auto; background: #fff; box-shadow: 3px 5px 12px #0002; }
@@ -104,7 +104,7 @@ dialog::backdrop { background: #0005; }
   .home-bio h1 { font-size: 32px; }
   .home-bio > p, .home-bio > .affiliation { margin-bottom: 20px; }
   .home-rule { margin-top: 28px; }
-  .contact-links { font-size: 16px; }
+  .contact-links { font-size: 15px; }
   .site-footer { padding: 32px 16px 16px; font-size: 13px; }
   .content-shell a { overflow-wrap: anywhere; }
   .paper, .discussion { padding-left: 14px; }
