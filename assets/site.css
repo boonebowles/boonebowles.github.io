@@ -85,6 +85,7 @@ blockquote { margin: 18px 0 0 22px; max-width: 80ch; }
 .update-list p { margin: 0; }
 .update-date time, .update-status { display: block; }
 .update-status { color: #555; font-size: 14px; font-style: italic; }
+.update-program { white-space: nowrap; }
 .updates-history-link { margin: 18px 0 0; }
 .update-group { margin-top: 30px; }
 .update-group .update-list li + li { margin-top: 18px; }
