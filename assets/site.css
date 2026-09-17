@@ -82,6 +82,12 @@ blockquote { margin: 18px 0 0 22px; max-width: 80ch; }
 .update-list li { display: grid; grid-template-columns: 112px 1fr; gap: 18px; }
 .update-list li + li { margin-top: 10px; }
 .update-list time { color: #555; }
+.update-list p { margin: 0; }
+.update-date time, .update-status { display: block; }
+.update-status { color: #555; font-size: 14px; font-style: italic; }
+.updates-history-link { margin: 18px 0 0; }
+.update-group { margin-top: 30px; }
+.update-group .update-list li + li { margin-top: 18px; }
 .site-footer { flex: 0 0 auto; padding: 40px 24px 20px; font-size: 14px; text-align: center; }
 dialog { width: min(720px, calc(100vw - 32px)); max-height: 85vh; padding: 24px; border: 1px solid #aaa; background: #fff; color: #111; }
 dialog::backdrop { background: #0005; }
