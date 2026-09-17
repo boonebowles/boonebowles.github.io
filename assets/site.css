@@ -43,8 +43,9 @@ li p, li p + p { margin: 0; }
 .paper .resource-links { margin-top: 5px; }
 .resource-links { font-size: 15px; }
 .paper-abstract { margin-top: 5px; }
-.paper-abstract summary { width: fit-content; color: var(--link); cursor: pointer; font-size: 15px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-.paper-abstract > p { max-width: 85ch; margin-top: 8px; }
+.paper-abstract summary, .instructor-note summary { width: fit-content; color: var(--link); cursor: pointer; font-size: 15px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.paper-abstract > p, .instructor-note > p { max-width: 85ch; margin-top: 8px; }
+.instructor-note { margin-top: 16px; }
 .media-item + .media-item { margin-top: 24px; }
 .media-meta { font-size: 15px; margin-top: 3px; }
 .media-note { margin-top: 5px; }

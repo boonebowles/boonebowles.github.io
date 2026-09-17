@@ -54,7 +54,7 @@ let loadPromise;
 async function loadIndex() {
   if (index) return;
   if (!loadPromise) {
-    loadPromise = fetch(`${base}/search-index.json`).then(response => {
+    loadPromise = fetch(`${base}/search-index.json`, {cache: "no-cache"}).then(response => {
       if (!response.ok) throw new Error("Search index unavailable");
       return response.json();
     }).then(data => { index = data; }).catch(error => {
@@ -64,21 +64,35 @@ async function loadIndex() {
   }
   await loadPromise;
 }
+function searchText(value) {
+  return value.normalize("NFKD").replace(/\p{M}/gu, "").toLowerCase()
+    .replace(/[’‘']/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+}
 function showResults() {
   results.replaceChildren();
-  const query = searchInput.value.trim().toLowerCase();
+  const query = searchText(searchInput.value);
   if (!query) { status.textContent = "Enter a word or phrase to search the site."; return; }
   const words = query.split(/\s+/);
-  const matches = index.filter(page => words.every(word => `${page.title} ${page.text}`.toLowerCase().includes(word)));
-  status.textContent = `${matches.length} ${matches.length === 1 ? "page" : "pages"} found.`;
+  const matches = index.filter(page => words.every(word =>
+    searchText(`${page.title} ${page.text} ${(page.aliases || []).join(" ")}`).includes(word)));
+  const score = page => {
+    const title = searchText(page.title);
+    return (title === query ? 6 : words.every(word => title.includes(word)) ? 3 : 0)
+      + (page.kind === "paper" ? 1 : 0);
+  };
+  matches.sort((a, b) => score(b) - score(a));
+  status.textContent = `${matches.length} ${matches.length === 1 ? "result" : "results"} found.`;
   for (const page of matches) {
     const item = document.createElement("li");
     const link = document.createElement("a");
     link.href = `${base}${page.path}`;
     link.textContent = page.title;
     const snippet = document.createElement("p");
-    const position = Math.max(0, page.text.toLowerCase().indexOf(words[0]) - 50);
-    snippet.textContent = `${position ? "…" : ""}${page.text.slice(position, position + 210)}${page.text.length > position + 210 ? "…" : ""}`;
+    let position = Math.max(0, page.text.toLowerCase().indexOf(words[0]) - 50);
+    if (position > 0) position = page.text.indexOf(" ", position) + 1;
+    let end = Math.min(page.text.length, position + 210);
+    if (end < page.text.length) end = page.text.lastIndexOf(" ", end);
+    snippet.textContent = `${position ? "…" : ""}${page.text.slice(position, end)}${end < page.text.length ? "…" : ""}`;
     item.append(link, snippet);
     results.append(item);
   }
@@ -94,6 +108,11 @@ searchButton.addEventListener("click", () => {
   search();
 });
 searchInput.addEventListener("input", search);
+results.addEventListener("click", event => {
+  if (event.target.closest("a") && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
+    searchDialog.close();
+  }
+});
 searchDialog.addEventListener("click", event => {
   if (event.target !== searchDialog) return;
   const box = searchDialog.getBoundingClientRect();
