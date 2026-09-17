@@ -2,31 +2,46 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="robots" content="noindex, follow">
-  
+  <script>
+  (() => {
+    if (!["www.boonebowles.com", "boonebowles.com"].includes(window.location.hostname)) return;
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function () { window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', 'G-N52R74YZ77', {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+      cookie_domain: 'none'
+    });
+    const tag = document.createElement('script');
+    tag.async = true;
+    tag.src = 'https://www.googletagmanager.com/gtag/js?id=G-N52R74YZ77';
+    document.head.appendChild(tag);
+  })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Boone Bowles | Finance | Texas A&amp;M University</title>
   <meta name="description" content="Boone Bowles, Assistant Professor of Finance at Mays Business School, Texas A&amp;M University. Research, teaching, and curriculum vitae.">
-  <link rel="canonical" href="https://boonebowles.github.io/">
+  <link rel="canonical" href="https://www.boonebowles.com/">
   <meta property="og:title" content="Home | Boone Bowles">
   <meta property="og:description" content="Boone Bowles, Assistant Professor of Finance at Mays Business School, Texas A&amp;M University. Research, teaching, and curriculum vitae.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://boonebowles.github.io/">
-  <meta property="og:image" content="https://boonebowles.github.io/assets/boone-bowles.png">
+  <meta property="og:url" content="https://www.boonebowles.com/">
+  <meta property="og:image" content="https://www.boonebowles.com/assets/boone-bowles.png">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfilePage",
-  "@id": "https://boonebowles.github.io/#profile",
-  "url": "https://boonebowles.github.io/",
+  "@id": "https://www.boonebowles.com/#profile",
+  "url": "https://www.boonebowles.com/",
   "name": "Boone Bowles",
   "mainEntity": {
     "@type": "Person",
-    "@id": "https://boonebowles.github.io/#person",
+    "@id": "https://www.boonebowles.com/#person",
     "name": "Boone Bowles",
-    "url": "https://boonebowles.github.io/",
+    "url": "https://www.boonebowles.com/",
     "jobTitle": "Assistant Professor of Finance",
-    "image": "https://boonebowles.github.io/assets/boone-bowles.png",
+    "image": "https://www.boonebowles.com/assets/boone-bowles.png",
     "sameAs": [
       "https://mays.tamu.edu/directory/boone-bowles/"
     ],
