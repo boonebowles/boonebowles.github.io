@@ -42,6 +42,14 @@ li p, li p + p { margin: 0; }
 .paper p + p { margin-top: 2px; }
 .paper .resource-links { margin-top: 5px; }
 .resource-links { font-size: 15px; }
+.paper-citation, .paper-citation summary { display: inline; }
+.paper-citation summary { color: var(--link); cursor: pointer; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; list-style: none; }
+.paper-citation summary::-webkit-details-marker { display: none; }
+.citation-panel { margin: 10px 0 12px; padding: 12px 14px; border: 1px solid #ddd; }
+.citation-panel label, .citation-label { display: block; margin-bottom: 5px; }
+.citation-panel textarea { display: block; width: 100%; min-height: 8em; margin: 0 0 12px; padding: 10px; resize: vertical; border: 1px solid #ccc; border-radius: 0; background: #fafafa; color: inherit; font: 13px/1.5 ui-monospace, "Cascadia Code", "Liberation Mono", monospace; }
+.apa-citation { overflow-wrap: anywhere; }
+@media (max-width: 767px) { .citation-panel textarea { font-size: 16px; } }
 .paper-abstract { margin-top: 5px; }
 .paper-abstract summary, .instructor-note summary { width: fit-content; color: var(--link); cursor: pointer; font-size: 15px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .paper-abstract > p, .instructor-note > p { max-width: 85ch; margin-top: 8px; }
