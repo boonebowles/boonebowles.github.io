@@ -42,6 +42,12 @@ li p, li p + p { margin: 0; }
 .paper p + p { margin-top: 2px; }
 .paper .resource-links { margin-top: 5px; }
 .resource-links { font-size: 15px; }
+.paper-abstract { margin-top: 5px; }
+.paper-abstract summary { width: fit-content; color: var(--link); cursor: pointer; font-size: 15px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.paper-abstract > p { max-width: 85ch; margin-top: 8px; }
+.media-item + .media-item { margin-top: 24px; }
+.media-meta { font-size: 15px; margin-top: 3px; }
+.media-note { margin-top: 5px; }
 .course-group { margin-top: 20px; }
 .course-group + .course-group { margin-top: 26px; }
 .course { margin: 14px 0 0 22px; }
