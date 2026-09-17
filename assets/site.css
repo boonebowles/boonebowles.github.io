@@ -76,6 +76,12 @@ blockquote { margin: 18px 0 0 22px; max-width: 80ch; }
 .affiliation p { margin: 0; }
 .contact-links { font-size: 15px; }
 .home-rule { height: 0; border: 0; border-top: 1px solid var(--rule); margin: 32px 0 0; }
+.recent-updates { margin-top: 22px; font-size: 15px; }
+.recent-updates h2 { margin-bottom: 14px; padding: 0; border: 0; font-size: 20px; font-weight: 400; }
+.update-list { list-style: none; margin: 0; padding: 0; }
+.update-list li { display: grid; grid-template-columns: 112px 1fr; gap: 18px; }
+.update-list li + li { margin-top: 10px; }
+.update-list time { color: #555; }
 .site-footer { flex: 0 0 auto; padding: 40px 24px 20px; font-size: 14px; text-align: center; }
 dialog { width: min(720px, calc(100vw - 32px)); max-height: 85vh; padding: 24px; border: 1px solid #aaa; background: #fff; color: #111; }
 dialog::backdrop { background: #0005; }
@@ -110,6 +116,8 @@ dialog::backdrop { background: #0005; }
   .home-bio h1 { font-size: 32px; }
   .home-bio > p, .home-bio > .affiliation { margin-bottom: 20px; }
   .home-rule { margin-top: 28px; }
+  .update-list li { grid-template-columns: 1fr; gap: 2px; }
+  .update-list li + li { margin-top: 14px; }
   .contact-links { font-size: 15px; }
   .site-footer { padding: 32px 16px 16px; font-size: 13px; }
   .content-shell a { overflow-wrap: anywhere; }
