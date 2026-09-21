@@ -12,9 +12,9 @@ button { cursor: pointer; }
 .site-header { position: sticky; top: 0; z-index: 20; width: 100%; min-height: 64px; display: flex; align-items: center; justify-content: flex-end; gap: 16px; padding: 0 max(24px, calc((100vw - 1080px) / 2)); background: #fff; }
 #site-nav { display: flex; align-items: center; gap: 18px; font-size: 16px; }
 #site-nav a, #site-nav a:visited { color: inherit; text-decoration: none; }
-#site-nav > a, .nav-teaching > a { display: inline-block; padding: 7px 0; white-space: nowrap; }
+#site-nav > a, .nav-group > a { display: inline-block; padding: 7px 0; white-space: nowrap; }
 #site-nav a[aria-current="page"], #site-nav a[data-active="true"] { font-weight: 700; }
-.nav-teaching { position: relative; display: flex; align-items: center; gap: 2px; }
+.nav-group { position: relative; display: flex; align-items: center; gap: 2px; }
 .icon-button { display: inline-flex; align-items: center; justify-content: center; border: 0; background: transparent; color: var(--link); width: 32px; height: 40px; padding: 6px; }
 .site-header .icon-button { color: inherit; }
 .icon-button svg { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; width: 21px; height: 21px; }
@@ -117,9 +117,9 @@ dialog::backdrop { background: #0005; }
   body.js #site-nav { display: none; position: fixed; top: 56px; bottom: 0; left: 0; width: min(320px, 90vw); padding: 16px; align-items: stretch; flex-direction: column; gap: 8px; overflow-y: auto; background: #fff; box-shadow: 3px 5px 12px #0002; }
   body.js #site-nav.is-open { display: flex; }
   body:not(.js) #site-nav { flex-wrap: wrap; gap: 0; }
-  #site-nav > a, .nav-teaching > a { white-space: normal; padding: 12px; }
-  .nav-teaching { flex-wrap: wrap; }
-  .nav-teaching > a { flex: 1; }
+  #site-nav > a, .nav-group > a { white-space: normal; padding: 12px; }
+  .nav-group { flex-wrap: wrap; }
+  .nav-group > a { flex: 1; }
   .submenu { position: static; width: 100%; padding: 0 0 0 12px; box-shadow: none; border: 0; }
   .submenu a { padding: 12px; }
   .content-shell { padding-top: 20px; }

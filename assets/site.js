@@ -2,29 +2,36 @@
 document.body.classList.add("js");
 const nav = document.querySelector("#site-nav");
 const menuButton = document.querySelector(".menu-toggle");
-const teachingButton = document.querySelector(".submenu-toggle");
-const teachingMenu = document.querySelector("#teaching-menu");
+const submenus = [...document.querySelectorAll(".submenu-toggle")].map(button => ({
+  button,
+  menu: document.getElementById(button.getAttribute("aria-controls")),
+  group: button.closest(".nav-group"),
+}));
 const searchButton = document.querySelector(".search-toggle");
 const searchDialog = document.querySelector("#site-search");
 const searchInput = document.querySelector("#search-input");
 const results = document.querySelector("#search-results");
 const status = document.querySelector("#search-status");
 const base = document.body.dataset.base;
-for (const button of [menuButton, teachingButton, searchButton]) button.hidden = false;
+for (const button of [menuButton, ...submenus.map(submenu => submenu.button), searchButton]) button.hidden = false;
 function toggle(button, open) { button.setAttribute("aria-expanded", String(open)); }
 menuButton.addEventListener("click", () => {
   const open = nav.classList.toggle("is-open");
   toggle(menuButton, open);
   menuButton.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
 });
-teachingButton.addEventListener("click", () => {
-  teachingMenu.hidden = !teachingMenu.hidden;
-  toggle(teachingButton, !teachingMenu.hidden);
-});
+for (const { button, menu } of submenus) {
+  button.addEventListener("click", () => {
+    menu.hidden = !menu.hidden;
+    toggle(button, !menu.hidden);
+  });
+}
 document.addEventListener("click", event => {
-  if (!event.target.closest(".nav-teaching")) {
-    teachingMenu.hidden = true;
-    toggle(teachingButton, false);
+  for (const { button, menu, group } of submenus) {
+    if (!group.contains(event.target)) {
+      menu.hidden = true;
+      toggle(button, false);
+    }
   }
   if (!event.target.closest(".site-header")) {
     nav.classList.remove("is-open");
@@ -40,11 +47,15 @@ document.addEventListener("keydown", event => {
       searchButton.focus();
       return;
     }
-    if (!teachingMenu.hidden) teachingButton.focus();
-    else if (nav.classList.contains("is-open")) menuButton.focus();
-    teachingMenu.hidden = true;
+    const openSubmenu = submenus.find(({ menu }) => !menu.hidden);
+    if (openSubmenu) {
+      openSubmenu.menu.hidden = true;
+      toggle(openSubmenu.button, false);
+      openSubmenu.button.focus();
+      return;
+    }
+    if (nav.classList.contains("is-open")) menuButton.focus();
     nav.classList.remove("is-open");
-    toggle(teachingButton, false);
     toggle(menuButton, false);
     menuButton.setAttribute("aria-label", "Open navigation");
   }
