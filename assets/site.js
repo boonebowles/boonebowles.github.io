@@ -1,5 +1,56 @@
 "use strict";
 document.body.classList.add("js");
+for (const button of document.querySelectorAll(".copy-email")) {
+  const email = button.parentElement.querySelector(".email-link");
+  const status = button.closest(".contact-links").querySelector(".email-copy-status");
+  let resetTimer;
+  button.hidden = false;
+  button.addEventListener("click", async () => {
+    clearTimeout(resetTimer);
+    status.textContent = "";
+    button.disabled = true;
+    try {
+      await navigator.clipboard.writeText(email.textContent.trim());
+      status.textContent = "Copied";
+      resetTimer = setTimeout(() => { status.textContent = ""; }, 2500);
+    } catch {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(email);
+      selection.removeAllRanges();
+      selection.addRange(range);
+      status.textContent = "Email selected. Copy it manually.";
+    } finally {
+      button.disabled = false;
+    }
+  });
+}
+for (const button of document.querySelectorAll(".copy-bibtex")) {
+  const editor = document.getElementById(button.dataset.editor);
+  const status = button.parentElement.querySelector(".copy-status");
+  let resetTimer;
+  button.hidden = false;
+  button.addEventListener("click", async () => {
+    clearTimeout(resetTimer);
+    status.textContent = "";
+    button.disabled = true;
+    try {
+      await navigator.clipboard.writeText(editor.value);
+      status.textContent = "Copied";
+      resetTimer = setTimeout(() => { status.textContent = ""; }, 2500);
+    } catch {
+      editor.focus();
+      editor.select();
+      status.textContent = "Select and copy the BibTeX below.";
+    } finally {
+      button.disabled = false;
+    }
+  });
+  editor.addEventListener("input", () => {
+    clearTimeout(resetTimer);
+    status.textContent = "";
+  });
+}
 const nav = document.querySelector("#site-nav");
 const menuButton = document.querySelector(".menu-toggle");
 const submenus = [...document.querySelectorAll(".submenu-toggle")].map(button => ({

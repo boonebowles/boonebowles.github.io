@@ -47,16 +47,27 @@ li p, li p + p { margin: 0; }
 .paper-citation summary::-webkit-details-marker { display: none; }
 .citation-panel { margin: 10px 0 12px; padding: 12px 14px; border: 1px solid #ddd; }
 .citation-panel label, .citation-label { display: block; margin-bottom: 5px; }
+.citation-heading { display: flex; align-items: baseline; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 5px; }
+.citation-heading label { margin-bottom: 0; }
+.copy-bibtex, .copy-email { padding: 3px 0; border: 0; background: transparent; color: var(--link); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.copy-status { color: #555; }
 .citation-panel textarea { display: block; width: 100%; min-height: 8em; margin: 0 0 12px; padding: 10px; resize: vertical; border: 1px solid #ccc; border-radius: 0; background: #fafafa; color: inherit; font: 13px/1.5 ui-monospace, "Cascadia Code", "Liberation Mono", monospace; }
 .apa-citation { overflow-wrap: anywhere; }
 @media (max-width: 767px) { .citation-panel textarea { font-size: 16px; } }
-.paper-abstract { margin-top: 5px; }
-.paper-abstract summary, .instructor-note summary { width: fit-content; color: var(--link); cursor: pointer; font-size: 15px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
-.paper-abstract > p, .instructor-note > p { max-width: 85ch; margin-top: 8px; }
+.paper-descriptions { display: grid; grid-template-columns: max-content max-content 1fr; align-items: baseline; gap: 8px 6px; margin-top: 5px; }
+.paper-descriptions details, .paper-descriptions details::details-content { display: contents; }
+.paper-descriptions details:not([open]) > p { display: none; }
+.paper-descriptions summary, .paper-descriptions > span { grid-row: 1; }
+.paper-descriptions p { order: 1; grid-column: 1 / -1; }
+.paper-abstract summary, .paper-overview summary, .media-summary summary, .instructor-note summary { width: fit-content; color: var(--link); cursor: pointer; font-size: 15px; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.paper-abstract > p, .paper-overview > p { max-width: 85ch; }
+.instructor-note > p { max-width: 85ch; margin-top: 8px; }
 .instructor-note { margin-top: 16px; }
 .media-item + .media-item { margin-top: 24px; }
 .media-meta { font-size: 15px; margin-top: 3px; }
 .media-note { margin-top: 5px; }
+.media-summary { margin-top: 5px; }
+.media-summary > p { max-width: 85ch; margin-top: 8px; }
 .course-group { margin-top: 20px; }
 .course-group + .course-group { margin-top: 26px; }
 .course { margin: 14px 0 0 22px; }
@@ -84,6 +95,9 @@ blockquote { margin: 18px 0 0 22px; max-width: 80ch; }
 .home-bio > :last-child { margin-bottom: 0; }
 .affiliation p { margin: 0; }
 .contact-links { font-size: 15px; }
+.email-contact, .contact-cv { display: inline-block; white-space: nowrap; }
+.copy-email { margin-left: 8px; }
+.email-copy-status:not(:empty) { display: block; margin-top: 3px; }
 .home-rule { height: 0; border: 0; border-top: 1px solid var(--rule); margin: 32px 0 0; }
 .recent-updates { margin-top: 22px; font-size: 15px; }
 .recent-updates h2 { margin-bottom: 14px; padding: 0; border: 0; font-size: 20px; font-weight: 400; }
