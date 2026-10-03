@@ -1,5 +1,35 @@
 "use strict";
 document.body.classList.add("js");
+let highlightedPaper;
+let paperHighlightTimer;
+function highlightLinkedPaper() {
+  clearTimeout(paperHighlightTimer);
+  highlightedPaper?.classList.remove("paper-arrival");
+  highlightedPaper = undefined;
+  let anchor;
+  try { anchor = decodeURIComponent(location.hash.slice(1)); }
+  catch { return; }
+  const paper = document.getElementById(anchor);
+  if (!paper?.matches(".paper[id]")) return;
+  // Restart the cue when the same paper is selected again.
+  void paper.offsetWidth;
+  paper.classList.add("paper-arrival");
+  highlightedPaper = paper;
+  paperHighlightTimer = setTimeout(() => {
+    paper.classList.remove("paper-arrival");
+    highlightedPaper = undefined;
+  }, 1100);
+}
+window.addEventListener("pageshow", highlightLinkedPaper);
+window.addEventListener("hashchange", highlightLinkedPaper);
+document.addEventListener("click", event => {
+  if (event.defaultPrevented || event.button !== 0 || event.ctrlKey || event.metaKey || event.shiftKey || event.altKey) return;
+  const link = event.target.closest("a[href]");
+  if (!link || link.hasAttribute("download") || (link.target && link.target !== "_self")) return;
+  const destination = new URL(link.href);
+  if (destination.origin === location.origin && destination.pathname === location.pathname
+      && destination.search === location.search && destination.hash === location.hash) highlightLinkedPaper();
+});
 for (const button of document.querySelectorAll(".copy-email")) {
   const email = button.parentElement.querySelector(".email-link");
   const status = button.closest(".contact-links").querySelector(".email-copy-status");

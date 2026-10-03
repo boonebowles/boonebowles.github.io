@@ -38,6 +38,14 @@ li p, li p + p { margin: 0; }
 .page-section > h2 + ul, .page-section > h1 + ul { margin-top: 0; }
 .paper { padding-left: 22px; }
 .paper + .paper { margin-top: 24px; }
+.paper-arrival { animation: paper-arrival 1.1s ease-out; }
+@keyframes paper-arrival {
+  0%, 15% { background-color: rgb(244 216 116 / 18%); box-shadow: 0 0 0 6px rgb(244 216 116 / 18%); }
+  100% { background-color: transparent; box-shadow: 0 0 0 6px transparent; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .paper-arrival { animation: none; background-color: rgb(244 216 116 / 18%); box-shadow: 0 0 0 6px rgb(244 216 116 / 18%); }
+}
 .paper-title { margin-left: -22px; }
 .paper p + p { margin-top: 2px; }
 .paper .resource-links { margin-top: 5px; }
